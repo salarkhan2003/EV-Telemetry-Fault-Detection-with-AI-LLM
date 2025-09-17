@@ -50,19 +50,15 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                 
                 <div className="space-y-4 text-gray-300">
                     <p>
-                        This app is designed to provide real-time monitoring and diagnostics for electric vehicle systems. By wirelessly collecting sensor data—such as battery, motor, and CAN bus parameters—from an ESP32 device, it empowers users to easily track their vehicle’s health.
+                        This app provides real-time monitoring and diagnostics for electric vehicle systems. By wirelessly collecting sensor data from an ESP32 device, it empowers EV enthusiasts, DIY builders, and technicians to track their vehicle’s health.
                     </p>
                     <p>
-                        The main goal is to help EV enthusiasts, DIY builders, and technicians to visualize live data and trends, receive AI-powered fault predictions and explanations from Google's Gemini API, and get actionable maintenance insights directly on their mobile device for improved safety and reliability.
+                        The main goal is to visualize live data, receive AI-powered fault predictions from Google's Gemini API, and get actionable maintenance insights directly on your mobile device for improved safety and reliability.
                     </p>
-                     <div className="border-t border-gray-700 pt-4">
-                        <h3 className="font-semibold text-lg text-cyan-400 mb-2">How it Works</h3>
-                        <ol className="list-decimal list-inside space-y-2">
-                            <li><span className="font-bold">Connect Hardware:</span> Program an ESP32 microcontroller using the provided code snippets to broadcast sensor data over Bluetooth (BLE) or WiFi (WebSocket).</li>
-                            <li><span className="font-bold">Establish Connection:</span> Use the 'Connect to Vehicle' button to link the app with your ESP32.</li>
-                            <li><span className="font-bold">Monitor Live Data:</span> Watch real-time telemetry on the dashboard.</li>
-                            <li><span className="font-bold">Get AI Insights:</span> The app periodically sends data to the Gemini API, which analyzes it for potential faults and provides actionable recommendations.</li>
-                        </ol>
+                     <div className="border-t border-gray-700 pt-4 mt-4">
+                        <p>
+                           For detailed instructions on how to set up your ESP32 hardware and configure the application, please refer to the <code className="bg-gray-700 text-cyan-400 px-1 py-0.5 rounded text-sm">README.md</code> file included with this project.
+                        </p>
                     </div>
                 </div>
 
