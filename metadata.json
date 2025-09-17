@@ -1,0 +1,7 @@
+{
+  "name": "EV Telemetry Fault Detection",
+  "description": "A dashboard to monitor electric vehicle battery and motor telemetry data, using the Gemini API to predict and detect faults in real-time.",
+  "requestFramePermissions": [
+    "bluetooth"
+  ]
+}
