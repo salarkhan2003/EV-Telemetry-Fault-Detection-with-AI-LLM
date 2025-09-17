@@ -1,11 +1,14 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { type TelemetryData, type FaultAnalysis, FaultStatus } from '../types';
 
-if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set");
-}
+const API_KEY = process.env.API_KEY;
+let ai: GoogleGenAI | null = null;
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+if (API_KEY) {
+    ai = new GoogleGenAI({ apiKey: API_KEY });
+} else {
+    console.error("CRITICAL: API_KEY environment variable not set. AI features will be disabled.");
+}
 
 const responseSchema = {
   type: Type.OBJECT,
@@ -28,6 +31,10 @@ const responseSchema = {
 };
 
 export async function analyzeTelemetry(data: TelemetryData): Promise<FaultAnalysis> {
+  if (!ai) {
+    throw new Error("Gemini API key is not configured in the environment. AI analysis is disabled.");
+  }
+
   const prompt = `
     You are an expert AI assistant for electric vehicle diagnostics. 
     Analyze the following real-time telemetry data from a vehicle's battery, motor, and general systems.
@@ -79,6 +86,10 @@ export async function analyzeTelemetry(data: TelemetryData): Promise<FaultAnalys
 }
 
 export async function getChatbotResponse(question: string, telemetry: TelemetryData): Promise<string> {
+    if (!ai) {
+      throw new Error("Gemini API key is not configured in the environment. The AI Assistant is disabled.");
+    }
+    
     const prompt = `
     You are a helpful and concise AI vehicle assistant.
     A user is asking a question about their electric vehicle's current status.
